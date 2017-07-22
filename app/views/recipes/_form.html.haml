@@ -1,0 +1,20 @@
+= form_with(model: recipe, local: true) do |form|
+  - if recipe.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(recipe.errors.count, "error")
+        prohibited this recipe from being saved:
+      %ul
+        - recipe.errors.full_messages.each do |message|
+          %li= message
+  = form.text_field :title
+  = form.text_field :instructions
+  -# = form.fields_for :recipe_ingredients do |ingredient_form|
+    //=ingredient_form.label :name
+    //=ingredient_form.select :ingredient, options_from_collection_for_select(Ingredient.all, :id, :name)
+  = recipe.to_json["ingredients"]
+  -# = react_component("RecipeIngredientsList", { availableIngredients: [{id: "1", name: "Beans"}, {name: "Rice", id:  "2"}], currentIngredients: [{id: "2", name: "What", quantity: "2"}] })
+  = react_component("RecipeIngredientsList", { availableIngredients: [{id: "1", name: "Beans"}, {name: "Rice", id:  "2"}], currentIngredients: recipe.to_json[:ingredients] })
+
+  .actions
+    = form.submit
