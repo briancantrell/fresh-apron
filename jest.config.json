@@ -1,0 +1,3 @@
+{
+  "testMatch" : [ "**/test/javascript/**/*.js?(x)" ]
+}

@@ -1,8 +1,7 @@
 import React from 'react';
 import RecipeIngredient from './recipe_ingredient';
 
-
-window.RecipeIngredientsList = class RecipeIngredientsList extends React.Component {
+export default class RecipeIngredientsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +21,6 @@ window.RecipeIngredientsList = class RecipeIngredientsList extends React.Compone
 
   render() {
     var availableIngredients = this.props.availableIngredients;
-
     var ingredientsComponents = [];
 
     this.state.currentIngredients.forEach(function(ingredient){
@@ -30,7 +28,7 @@ window.RecipeIngredientsList = class RecipeIngredientsList extends React.Compone
        <RecipeIngredient
         selectedIngredient={ingredient}
         availableIngredients={availableIngredients}
-        key={ingredient.id}
+        key={ingredient.ingredient_id}
         />);
     });
 
@@ -44,3 +42,5 @@ window.RecipeIngredientsList = class RecipeIngredientsList extends React.Compone
     );
   }
 }
+
+window.RecipeIngredientsList  =  RecipeIngredientsList

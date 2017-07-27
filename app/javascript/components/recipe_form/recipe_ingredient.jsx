@@ -44,7 +44,7 @@ export default class RecipeIngredient extends React.Component {
     return (
       <div>
         <QuantityInput
-          quantity={this.state.selectedIngredient.quantity}
+          value={this.state.selectedIngredient.quantity}
           onQuantityChange={this.handleQuantityChange}
           />
 

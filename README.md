@@ -1,3 +1,6 @@
+# Running tests
+`jest --config=jest.config.json`
+
 # The plan
  - [x] Click "plan next week" and see new meals
  - [x] Click a scheduled meal and change the recipe
