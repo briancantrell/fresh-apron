@@ -28,7 +28,7 @@ export default class RecipeIngredientsList extends React.Component {
        <RecipeIngredient
         selectedIngredient={ingredient}
         availableIngredients={availableIngredients}
-        key={ingredient.ingredient_id}
+        key={ingredient.id}
         />);
     });
 

@@ -11,6 +11,9 @@
  - [ ] If the week has meals, show shopping list
  - [ ] Recipe create form
 
+# Things that might happen some day
+ - [ ] Authentication (https://github.com/halogenandtoast/monban ?)
+
 # Object Design
 Schedule
   - Days to schedule

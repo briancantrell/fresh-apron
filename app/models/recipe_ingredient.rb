@@ -6,6 +6,7 @@ class RecipeIngredient < ApplicationRecord
 
   def to_json
     {
+      id: id,
       ingredient_id: ingredient_id,
       name: name,
       quantity: quantity,

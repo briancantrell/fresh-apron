@@ -5,10 +5,12 @@ export default class RecipeIngredient extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedIngredient: props.selectedIngredient
+      selectedIngredient: props.selectedIngredient,
+      deleted: false
     }
 
    this.handleIngredientChange = this.handleIngredientChange.bind(this);
+   this.deleteIngredient = this.deleteIngredient.bind(this);
    this.handleQuantityChange = this.handleQuantityChange.bind(this);
   }
 
@@ -18,7 +20,7 @@ export default class RecipeIngredient extends React.Component {
     });
 
     this.setState({
-      selectedIngredient: newIngredient
+      selectedIngredient: newIngredient,
     });
   }
 
@@ -27,6 +29,12 @@ export default class RecipeIngredient extends React.Component {
     updatedIngredient.quantity = e.target.value;
     this.setState({
       selectedIngredient: updatedIngredient
+    });
+  }
+
+  deleteIngredient(e) {
+    this.setState({
+      deleted: true
     });
   }
 
@@ -41,8 +49,22 @@ export default class RecipeIngredient extends React.Component {
       );
     });
 
+    var deletedInput = "";
+    if(this.state.deleted == true) {
+      deletedInput = <input
+        type="hidden"
+        name="recipe[recipe_ingredients_attributes][][_destroy]"
+        value="true"
+        className="hidden-delete-input"
+        />;
+    };
+
     return (
-      <div>
+      <div className={(this.state.deleted == true ? "deleted" : "")}>
+        <input
+          name="recipe[recipe_ingredients_attributes][][id]"
+          value={this.props.selectedIngredient.id}
+          />
         <QuantityInput
           value={this.state.selectedIngredient.quantity}
           onQuantityChange={this.handleQuantityChange}
@@ -55,6 +77,16 @@ export default class RecipeIngredient extends React.Component {
           >
           {ingredientOptions}
         </select>
+
+        <button
+          onClick={this.deleteIngredient}
+          className="delete-button"
+          type="button"
+          >
+          Delete
+        </button>
+
+        {deletedInput}
       </div>
     );
   }
