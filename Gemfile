@@ -40,6 +40,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'ri_cal', '~> 0.8'
 gem "react-rails"
 
+gem 'monban'
+gem 'monban-generators'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
