@@ -9,8 +9,8 @@ class RecipeIngredient < ApplicationRecord
       id: id,
       ingredient_id: ingredient_id,
       name: name,
-      quantity: quantity,
-      units: units
+      quantity: quantity.to_s,
+      units: ingredient.units
     }
   end
 end

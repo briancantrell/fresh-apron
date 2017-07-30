@@ -9,7 +9,9 @@
 
  - [ ] Event shows instructions
  - [ ] If the week has meals, show shopping list
- - [ ] Recipe create form
+ - [x] Recipe create form
+
+ - [ ] Use attributes API to standardize measurements, i.e. user inputs recipe ingredient as "2 cups water", stored in DB as 32 oz
 
 # Things that might happen some day
  - [ ] Authentication (https://github.com/halogenandtoast/monban ?)

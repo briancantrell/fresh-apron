@@ -7,20 +7,20 @@
       %ul
         - recipe.errors.full_messages.each do |message|
           %li= message
-  = form.label :title
-  = form.text_field :title
+  = form.label :title, class: "f6 b db mb2"
+  = form.text_field :title, class: "db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2"
 
-  = form.label :instructions
-  = form.text_field :instructions
+  = form.label :instructions, class: "f6 b db mb2"
+  = form.text_area :instructions, rows: 20, cols: 80, class: "db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2"
   -# = form.fields_for :recipe_ingredients do |ingredient_form|
     //=ingredient_form.label :name
     //=ingredient_form.select :ingredient, options_from_collection_for_select(Ingredient.all, :id, :name)
   %h3 Ingredients
   = recipe.to_json["ingredients"]
   -# = react_component("RecipeIngredientsList", { availableIngredients: [{id: "1", name: "Beans"}, {name: "Rice", id:  "2"}], currentIngredients: [{id: "2", name: "What", quantity: "2"}] })
-  = react_component("RecipeIngredientsList", 
-    { availableIngredients: [{id: "1", name: "Beans"}, {name: "Rice", id:  "2"}], 
+  = react_component("RecipeIngredientsList",
+    { availableIngredients: available_ingredients.map(&:to_json),
     currentIngredients: recipe.to_json[:ingredients] })
 
   .actions
-    = form.submit
+    = form.submit class: "db border-box hover-black  measure ba b--black-20 pa2 br2 mb2"

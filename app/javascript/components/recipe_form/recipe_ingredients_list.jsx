@@ -13,7 +13,7 @@ export default class RecipeIngredientsList extends React.Component {
 
   addIngredient() {
     var newIngredients = this.state.currentIngredients
-    newIngredients.push({ name: "" })
+    newIngredients.push({ name: "", quantity: "" })
     this.setState({
       currentIngredients: newIngredients
     });
@@ -34,10 +34,8 @@ export default class RecipeIngredientsList extends React.Component {
 
     return (
       <div>
-        <ul>
-          {ingredientsComponents}
-        </ul>
-        <input type="button" value="Add ingredient" onClick={this.addIngredient} />
+        {ingredientsComponents}
+        <input type="button" value="Add ingredient" onClick={this.addIngredient} className="db border-box hover-black  measure ba b--black-20 pa2 br2 mb2" />
       </div>
     );
   }

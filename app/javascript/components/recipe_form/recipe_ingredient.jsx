@@ -60,31 +60,42 @@ export default class RecipeIngredient extends React.Component {
     };
 
     return (
-      <div className={(this.state.deleted == true ? "deleted" : "")}>
+      <div className={"fl w-100 pa" + (this.state.deleted == true ? "deleted" : "")}>
         <input
           name="recipe[recipe_ingredients_attributes][][id]"
           value={this.props.selectedIngredient.id}
-          />
-        <QuantityInput
-          value={this.state.selectedIngredient.quantity}
-          onQuantityChange={this.handleQuantityChange}
+          type="hidden"
+          className="mb2"
           />
 
-        <select
-          name="recipe[recipe_ingredients_attributes][][ingredient_id]"
-          onChange={this.handleIngredientChange}
-          value={this.state.selectedIngredient.ingredient_id}
-          >
-          {ingredientOptions}
-        </select>
+        <div className="fl w-third">
+          <QuantityInput
+            quantity={this.state.selectedIngredient.quantity}
+            units={this.state.selectedIngredient.units}
+            onQuantityChange={this.handleQuantityChange}
+            />
+        </div>
 
-        <button
-          onClick={this.deleteIngredient}
-          className="delete-button"
-          type="button"
-          >
-          Delete
-        </button>
+        <div className="fl w-third">
+          <select
+            name="recipe[recipe_ingredients_attributes][][ingredient_id]"
+            onChange={this.handleIngredientChange}
+            value={this.state.selectedIngredient.ingredient_id}
+            className="db border-box hover-black  measure ba b--black-20 pa2 br2 mb2"
+            >
+            {ingredientOptions}
+          </select>
+        </div>
+
+        <div className="fl w-third">
+          <button
+            onClick={this.deleteIngredient}
+            className="delete-button db border-box hover-black  measure ba b--black-20 pa2 br2 mb2"
+            type="button"
+            >
+            Delete
+          </button>
+        </div>
 
         {deletedInput}
       </div>

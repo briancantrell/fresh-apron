@@ -14,6 +14,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/new
   def new
+    @available_ingredients = Ingredient.all
     @recipe = Recipe.new
   end
 
@@ -63,12 +64,14 @@ class RecipesController < ApplicationController
 
   private
     def set_recipe
+      @available_ingredients = Ingredient.all
       @recipe = Recipe.find(params[:id])
     end
 
     def recipe_params
       params
         .require(:recipe)
-        .permit(:title, :instructions, recipe_ingredients_attributes: [:id, :ingredient_id, :quantity])
+        .permit(:title, :instructions, 
+      recipe_ingredients_attributes: [:id, :ingredient_id, :quantity, :_destroy])
     end
 end

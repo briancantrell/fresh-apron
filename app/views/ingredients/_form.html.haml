@@ -7,7 +7,16 @@
       %ul
         - ingredient.errors.full_messages.each do |message|
           %li= message
-  %label Name
-  = form.text_field :name
-  .actions
+
+  %div{class: "fl w-50 pa1"}
+    %label Name
+  %div{class: "fl w-50 pa1"}
+    = form.text_field :name
+
+  %div{class: "fl w-50 pa1"}
+    %label Units
+  %div{class: "fl w-50 pa1"}
+    = form.select :units, Ingredient.units.keys
+
+  .actions{class: "fl w-50 pa1"}
     = form.submit
