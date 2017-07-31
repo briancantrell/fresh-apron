@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    raise "No registration just yet"
     @user = sign_up(user_params)
 
     if @user.valid?
