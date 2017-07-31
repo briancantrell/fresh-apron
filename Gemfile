@@ -40,6 +40,8 @@ gem 'jbuilder', '~> 2.5'
 #
 gem 'ri_cal', '~> 0.8'
 gem "react-rails"
+gem 'rails_12factor', group: :production
+
 
 gem 'monban'
 gem 'monban-generators'
