@@ -11,6 +11,11 @@
         options_from_collection_for_select(Recipe.all, :id, :title, meal.recipe.id), |
         {class: "recipe-chooser"}                                                    |
       = meal.scheduled_at.to_default_s
+
+
+%input{value: schedule_url(1), size: 70}
+
+
 :javascript
   $(function() {
     $(".recipe-chooser").change(function(event) {

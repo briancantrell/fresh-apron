@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170730221934) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -19,7 +22,7 @@ ActiveRecord::Schema.define(version: 20170730221934) do
     t.integer "units"
   end
 
-  create_table "meals", force: :cascade do |t|
+  create_table "meals", id: :serial, force: :cascade do |t|
     t.integer "recipe_id"
     t.datetime "scheduled_at"
     t.datetime "created_at", null: false
@@ -28,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170730221934) do
   end
 
   create_table "password_resets", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,15 +41,15 @@ ActiveRecord::Schema.define(version: 20170730221934) do
   create_table "recipe_ingredients", force: :cascade do |t|
     t.decimal "quantity"
     t.string "units"
-    t.integer "recipe_id"
-    t.integer "ingredient_id"
+    t.bigint "recipe_id"
+    t.bigint "ingredient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
     t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
   end
 
-  create_table "recipes", force: :cascade do |t|
+  create_table "recipes", id: :serial, force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

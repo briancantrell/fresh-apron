@@ -1,4 +1,6 @@
 class SchedulesController < ApplicationController
+  skip_before_action :require_login, only: [:show], raise: false
+
   def create
     start_date = Date.parse(schedule_params[:start_date])
     end_date = Date.parse(schedule_params[:end_date])
@@ -20,7 +22,7 @@ class SchedulesController < ApplicationController
           Meal.all.each do |meal|
             event do
               summary     meal.recipe.title
-              description meal.recipe.instructions.to_s
+              description meal.event_description
               dtstart     meal.scheduled_at
               dtend       (meal.scheduled_at + 1.hour)
               # location    "Cape Canaveral"
@@ -33,9 +35,6 @@ class SchedulesController < ApplicationController
         end
       send_data(cal.export, filename: "recipes.ics", disposition: "inline; filename=recipes.ics", type: "text/calendar")
       end
-
-
-
     end
   end
 

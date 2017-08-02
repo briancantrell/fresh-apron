@@ -3,6 +3,7 @@ class RecipeIngredient < ApplicationRecord
   belongs_to :ingredient
 
   delegate :name, to: :ingredient
+  delegate :units_abbreviation, to: :ingredient
 
   def to_json
     {
@@ -10,7 +11,7 @@ class RecipeIngredient < ApplicationRecord
       ingredient_id: ingredient_id,
       name: name,
       quantity: quantity.to_s,
-      units: ingredient.units
+      units: units
     }
   end
 end
