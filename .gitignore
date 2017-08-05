@@ -23,3 +23,4 @@
 /node_modules
 tags
 yarn-error.log
+.DS_Store
