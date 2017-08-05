@@ -1,19 +1,33 @@
-= button_to "Schedule next week", schedules_path(       |
-    start_date: Date.today.next_week.beginning_of_week, |
-    end_date: Date.today.next_week.end_of_week,         |
-    days: "1,3"                                         |
-  )                                                     |
-- @meals.each do |meal|
-  .meal
-    %span.recipe-title= meal.recipe.title
-    = form_tag(meal_path(meal), method: :patch) do
-      = select_tag :recipe_id,                                                       |
-        options_from_collection_for_select(Recipe.all, :id, :title, meal.recipe.id), |
-        {class: "recipe-chooser"}                                                    |
-      = meal.scheduled_at.to_default_s
+.fl.w-100.pa2
+  %label{for: "calendar_url"} Calendar URL
+  %input{value: schedule_url(1), size: 60, name: "calendar_url"}
 
 
-%input{value: schedule_url(1), size: 70}
+.fl.w-100.pa2
+  %table.meals-table{cellspacing: 0}
+    %tr
+      %th.tl.bb{colspan: 2}
+        %h2 Scheduled meals
+
+    - @meals.each do |meal|
+      %tr
+        %td
+          = form_tag(meal_path(meal), method: :patch) do
+            = select_tag :recipe_id,                                                       |
+              options_from_collection_for_select(Recipe.all, :id, :title, meal.recipe.id), |
+              {class: "recipe-chooser"}                                                    |
+        %td
+          =meal.scheduled_at.to_s(:friendly_date)
+
+.fl.w-100.pa2
+  = button_to "Schedule next week", schedules_path(       |
+      start_date: Date.today.next_week.beginning_of_week, |
+      end_date: Date.today.next_week.end_of_week,         |
+      days: "1,3"                                         |
+    ),                                                    |
+    class: "f5 no-underline bg-white black bg-animate hover-bg-black hover-white inline-flex items-center pa3 ba border-box mr4"
+
+
 
 
 :javascript
