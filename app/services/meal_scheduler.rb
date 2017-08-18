@@ -1,4 +1,4 @@
-class ScheduleService
+class MealScheduler
   def self.schedule_meals(start_date, end_date, days_to_schedule)
     (start_date..end_date).map do |day|
       if days_to_schedule.include?(day.wday)

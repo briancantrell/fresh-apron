@@ -6,7 +6,6 @@ class ShoppingList
   end
 
   def add_ingredients(meal)
-    # offset = meal.scheduled_at.wday - shopping_day
     byebug
   end
 

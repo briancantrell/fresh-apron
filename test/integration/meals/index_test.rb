@@ -5,7 +5,7 @@ module Meals
     def setup
       super
       @recipe = Recipe.create(title: "Test Recipe")
-      ScheduleService.schedule_meals(
+      MealScheduler.schedule_meals(
         Date.new(2017, 4, 2),
         Date.new(2017, 4, 30),
         [2,4]

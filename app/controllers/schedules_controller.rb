@@ -6,7 +6,7 @@ class SchedulesController < ApplicationController
     end_date = Date.parse(schedule_params[:end_date])
     days_to_schedule = schedule_params[:days].split(",").map &:to_i
 
-    if ScheduleService.schedule_meals(start_date, end_date, days_to_schedule)
+    if MealScheduler.schedule_meals(start_date, end_date, days_to_schedule)
       message = { notice: "Meals successfully scheduled." }
     else
       message = { alert: "There was an error scheduling your meals." }
@@ -18,7 +18,7 @@ class SchedulesController < ApplicationController
   def show
     respond_to do |format|
       format.ics do
-        cal = MealCalendarService.generate_calendar
+        cal = CalendarBuilder.generate_calendar
         send_data(cal.export,
                   filename: "recipes.ics",
                   disposition: "inline; filename=recipes.ics", type: "text/calendar"

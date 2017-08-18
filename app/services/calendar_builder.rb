@@ -1,4 +1,4 @@
-class MealCalendarService
+class CalendarBuilder
   SHOPPING_DAY = 0
 
   def self.generate_calendar

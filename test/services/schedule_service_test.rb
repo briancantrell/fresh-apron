@@ -1,9 +1,9 @@
 require 'test_helper'
 
-class ScheduleServiceTest < ActiveSupport::TestCase
+class MealSchedulerTest < ActiveSupport::TestCase
   test "the start and end dates are correct" do
     Recipe.create(title: "Test Recipe")
-    ScheduleService.schedule_meals(
+    MealScheduler.schedule_meals(
       Date.new(2017, 4, 16),
       Date.new(2017, 4, 22),
       [2,4]
@@ -19,7 +19,7 @@ class ScheduleServiceTest < ActiveSupport::TestCase
   test "it creates the right number of meals" do
     Recipe.create(title: "Test Recipe")
     assert_difference 'Meal.count', 8 do
-      ScheduleService.schedule_meals(
+      MealScheduler.schedule_meals(
         Date.new(2017, 4, 2),
         Date.new(2017, 4, 30),
         [2,4]
@@ -29,13 +29,13 @@ class ScheduleServiceTest < ActiveSupport::TestCase
 
   test "it doesn't create duplicates" do
     Recipe.create(title: "Test Recipe")
-    ScheduleService.schedule_meals(
+    MealScheduler.schedule_meals(
       Date.new(2017, 4, 2),
       Date.new(2017, 4, 30),
       [2,4]
     )
     assert_difference 'Meal.count', 0 do
-      ScheduleService.schedule_meals(
+      MealScheduler.schedule_meals(
         Date.new(2017, 4, 2),
         Date.new(2017, 4, 30),
         [2,4]
