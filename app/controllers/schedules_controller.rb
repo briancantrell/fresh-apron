@@ -17,23 +17,12 @@ class SchedulesController < ApplicationController
 
   def show
     respond_to do |format|
-      format.text do
-        cal = RiCal.Calendar do
-          Meal.all.each do |meal|
-            event do
-              summary     meal.recipe.title
-              description meal.event_description
-              dtstart     meal.scheduled_at
-              dtend       (meal.scheduled_at + 1.hour)
-              # location    "Cape Canaveral"
-              # add_attendee "john.glenn@nasa.gov"
-              # alarm do
-              #   description "Segment 51"
-              # end
-            end
-          end
-        end
-      send_data(cal.export, filename: "recipes.ics", disposition: "inline; filename=recipes.ics", type: "text/calendar")
+      format.ics do
+        cal = MealCalendarService.generate_calendar
+        send_data(cal.export,
+                  filename: "recipes.ics",
+                  disposition: "inline; filename=recipes.ics", type: "text/calendar"
+                 )
       end
     end
   end
