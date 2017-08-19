@@ -5,7 +5,7 @@ class CalendarBuilder
     meals = Meal.all.order(:scheduled_at)
     cal = RiCal.Calendar
     create_meal_events(meals, cal)
-    create_shopping_events(meals)
+    create_shopping_events(meals, cal)
     cal
   end
 
@@ -18,22 +18,21 @@ class CalendarBuilder
         event.dtend       = (meal.scheduled_at + 1.hour)
       end
     end
-    calendar
   end
 
   def self.create_shopping_events(meals, calendar)
-    shopping_list = ShoppingList.new(shopping_day: SHOPPING_DAY)
+    calendar_shopping_lists = CalendarShoppingLists.new(shopping_day: SHOPPING_DAY)
 
     meals.each do |meal|
-      shopping_list.add_meal_ingredients(meal)
+      calendar_shopping_lists.add_meal(meal)
     end
 
-    shopping_list.shopping_days.each do |shopping_day|
+    calendar_shopping_lists.shopping_days.each do |shopping_day, shopping_list|
       calendar.events << RiCal.Event do |event|
         event.summary     = "Grocery shopping"
-        event.description = shopping_day.event_description
-        event.dtstart     = "10:00"
-        event.dtend       = "11:00"
+        event.description = shopping_list.event_description
+        event.dtstart     = shopping_day
+        event.dtend       = shopping_day
       end
     end
   end
