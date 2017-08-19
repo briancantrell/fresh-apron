@@ -25,7 +25,7 @@ class CalendarBuilder
     shopping_list = ShoppingList.new(shopping_day: SHOPPING_DAY)
 
     meals.each do |meal|
-      shopping_list.add_ingredients(meal)
+      shopping_list.add_meal_ingredients(meal)
     end
 
     shopping_list.shopping_days.each do |shopping_day|
