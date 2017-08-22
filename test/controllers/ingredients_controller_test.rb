@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class IngredientsControllerTest < ActionDispatch::IntegrationTest
+  include Monban::Test::Helpers
   setup do
     @ingredient = ingredients(:one)
+    user = User.create
+    sign_in user
   end
 
   test "should get index" do
@@ -17,10 +20,10 @@ class IngredientsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create ingredient" do
     assert_difference('Ingredient.count') do
-      post ingredients_url, params: { ingredient: {  } }
+      post ingredients_url, params: { ingredient: { name: "Test Ingredient", units: :ounce_volume } }
     end
 
-    assert_redirected_to ingredient_url(Ingredient.last)
+    assert_redirected_to ingredients_path
   end
 
   test "should show ingredient" do
@@ -34,8 +37,13 @@ class IngredientsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update ingredient" do
-    patch ingredient_url(@ingredient), params: { ingredient: {  } }
-    assert_redirected_to ingredient_url(@ingredient)
+    patch ingredient_url(@ingredient), params: {
+      ingredient: {
+        name: "Test Ingredient",
+        units: :ounce_volume
+      }
+    }
+    assert_redirected_to ingredients_path
   end
 
   test "should destroy ingredient" do

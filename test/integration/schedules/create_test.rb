@@ -2,8 +2,13 @@ require 'test_helper'
 
 module Schedules
   class CreateTest < ActionDispatch::IntegrationTest
+    include Monban::Test::Helpers
+
     def setup
       super
+      user = User.create
+      sign_in(user)
+
       @recipe = Recipe.create(title: "Test Recipe")
     end
 
@@ -14,9 +19,13 @@ module Schedules
         days: "2,4"
       }
       assert_redirected_to controller: "meals", action: "index"
+      assert_equal(
+        8,
+        Meal.all.count
+      )
 
-      get "/meals"
-      assert_select ".recipe-title", text: @recipe.title, count: 8
+      # get "/meals"
+      # assert_select ".recipe-chooser", count: 8
     end
   end
 end

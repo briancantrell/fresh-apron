@@ -2,8 +2,13 @@ require 'test_helper'
 
 module Meals
   class IndexTest < ActionDispatch::IntegrationTest
+    include Monban::Test::Helpers
     def setup
       super
+
+      user = User.create
+      sign_in(user)
+
       @recipe = Recipe.create(title: "Test Recipe")
       MealScheduler.schedule_meals(
         Date.new(2017, 4, 2),
@@ -14,12 +19,7 @@ module Meals
 
     test "shows all the meals" do
       get "/meals"
-      assert_select ".recipe-title", text: @recipe.title, count: 8
-    end
-
-    test "clicking the schedule button" do
-
+      assert_select ".recipe-chooser", count: 8
     end
   end
 end
-
