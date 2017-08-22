@@ -7,14 +7,18 @@
  - [x] Paste the ical link into Calendar and see scheduled meals
  - [x] Don't create duplicates
 
- - [ ] Event shows instructions
- - [ ] If the week has meals, show shopping list
+ - [x] Event shows instructions
+ - [x] If the week has meals, show shopping list
  - [x] Recipe create form
+
+ - [ ] Meal event has link to recipe
+ - [ ] Shopping event has link to checkable shopping list 
+ - [ ] Shopping list exports to Wunderlist
 
  - [ ] Use attributes API to standardize measurements, i.e. user inputs recipe ingredient as "2 cups water", stored in DB as 32 oz
 
 # Things that might happen some day
- - [ ] Authentication (https://github.com/halogenandtoast/monban ?)
+ - [x] Authentication (https://github.com/halogenandtoast/monban ?)
 
 # Object Design
 Schedule
