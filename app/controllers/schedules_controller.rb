@@ -17,7 +17,7 @@ class SchedulesController < ApplicationController
 
   def show
     respond_to do |format|
-      format.ics do
+      format.any do
         cal = CalendarBuilder.generate_calendar
         send_data(cal.export,
                   filename: "recipes.ics",

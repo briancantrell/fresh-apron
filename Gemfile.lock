@@ -150,6 +150,8 @@ GEM
       railties (>= 3.2)
       tilt
     ri_cal (0.8.8)
+    rollbar (2.15.1)
+      multi_json
     ruby_parser (3.9.0)
       sexp_processor (~> 4.1)
     sass (3.4.23)
@@ -213,6 +215,7 @@ DEPENDENCIES
   rails_12factor
   react-rails
   ri_cal (~> 0.8)
+  rollbar
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
