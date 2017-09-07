@@ -4,7 +4,7 @@ class SchedulesController < ApplicationController
   def create
     start_date = Date.parse(schedule_params[:start_date])
     end_date = Date.parse(schedule_params[:end_date])
-    days_to_schedule = schedule_params[:days].split(",").map &:to_i
+    days_to_schedule = current_user.profile.meal_days
 
     if MealScheduler.schedule_meals(start_date, end_date, days_to_schedule)
       message = { notice: "Meals successfully scheduled." }
@@ -18,7 +18,7 @@ class SchedulesController < ApplicationController
   def show
     respond_to do |format|
       format.any do
-        cal = CalendarBuilder.generate_calendar
+        cal = CalendarBuilder.generate_calendar(current_user.profile.shopping_day)
         send_data(cal.export,
                   filename: "recipes.ics",
                   disposition: "inline; filename=recipes.ics", type: "text/calendar"

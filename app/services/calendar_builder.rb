@@ -1,11 +1,9 @@
 class CalendarBuilder
-  SHOPPING_DAY = 0
-
-  def self.generate_calendar
+  def self.generate_calendar(shopping_day)
     meals = Meal.all.order(:scheduled_at)
     cal = RiCal.Calendar
     create_meal_events(meals, cal)
-    create_shopping_events(meals, cal)
+    create_shopping_events(shopping_day, meals, cal)
     cal
   end
 
@@ -20,8 +18,8 @@ class CalendarBuilder
     end
   end
 
-  def self.create_shopping_events(meals, calendar)
-    calendar_shopping_lists = CalendarShoppingLists.new(shopping_day: SHOPPING_DAY)
+  def self.create_shopping_events(shopping_day, meals, calendar)
+    calendar_shopping_lists = CalendarShoppingLists.new(shopping_day: shopping_day)
 
     meals.each do |meal|
       calendar_shopping_lists.add_meal(meal)

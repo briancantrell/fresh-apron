@@ -2,7 +2,7 @@ class MealScheduler
   def self.schedule_meals(start_date, end_date, days_to_schedule)
     (start_date..end_date).map do |day|
       if days_to_schedule.include?(day.wday)
-        scheduled_at = DateTime.new(
+        scheduled_at = Time.new(
           day.year,
           day.month,
           day.day,

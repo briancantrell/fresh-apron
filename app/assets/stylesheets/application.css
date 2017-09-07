@@ -12,5 +12,6 @@
  *
  *= require scaffolds
  *= require meals
+ *= require settings
  *= require_self
  */

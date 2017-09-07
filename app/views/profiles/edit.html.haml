@@ -1,0 +1,16 @@
+-# -byebug
+- days = Date::DAYNAMES.map.with_index { |day,i| [day, i] }
+=form_for(@profile, url: user_profile_path(current_user)) do |f|
+  .fl.w-50.pa1
+    =f.label "Shopping day"
+  .fl.w-50.pa1
+    =f.select :shopping_day, options_for_select(days, @profile.shopping_day)
+
+  .fl.w-50.pa1
+    =f.label "Meal days"
+  .fl.w-50.pa1.meal_days
+    -days = Date::DAYNAMES.map.with_index { |day,i| OpenStruct.new(day: day, index: i) }
+    =f.collection_check_boxes :meal_days, days, :index,  :day
+
+  .actions{class: "fl w-50 pa1"}
+    =f.submit
