@@ -1,7 +1,7 @@
 class MealsController < ApplicationController
   def update
     if Meal.find(params[:id]).update(meal_params)
-      redirect_to schedule_path(id: 1)
+      redirect_to meals_path
     else
     end
   end
