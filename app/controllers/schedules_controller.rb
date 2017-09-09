@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-  skip_before_action :require_login, only: [:show], raise: false
+  skip_before_action :require_login, only: [:index], raise: false
 
   def create
     start_date = Date.parse(schedule_params[:start_date])
@@ -15,10 +15,11 @@ class SchedulesController < ApplicationController
     redirect_to meals_path
   end
 
-  def show
+  def index
+    user = User.find_by!(auth_token: params[:token])
     respond_to do |format|
       format.any do
-        cal = CalendarBuilder.generate_calendar(current_user.profile.shopping_day)
+        cal = CalendarBuilder.generate_calendar(user.profile.shopping_day)
         send_data(cal.export,
                   filename: "recipes.ics",
                   disposition: "inline; filename=recipes.ics", type: "text/calendar"

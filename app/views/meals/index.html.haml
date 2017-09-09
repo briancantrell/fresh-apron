@@ -1,6 +1,6 @@
 .fl.w-100.pa2
   %label{for: "calendar_url"} Calendar URL
-  %input{value: schedule_url(1), size: 60, name: "calendar_url"}
+  %input{value: schedules_url(token: current_user.auth_token), size: 60, name: "calendar_url"}
 
 
 .fl.w-100.pa2

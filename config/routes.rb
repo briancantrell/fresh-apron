@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   # require login for routes below
   resources :recipes
   resources :ingredients
-  resources :schedules, only: [:show, :create]
+  resources :schedules, only: [:index, :create]
   resources :meals
 end
