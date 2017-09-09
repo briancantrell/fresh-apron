@@ -19,7 +19,7 @@ class SchedulesController < ApplicationController
     user = User.find_by!(auth_token: params[:token])
     respond_to do |format|
       format.any do
-        cal = CalendarBuilder.generate_calendar(user.profile.shopping_day)
+        cal = CalendarBuilder.generate_calendar(user)
         send_data(cal.export,
                   filename: "recipes.ics",
                   disposition: "inline; filename=recipes.ics", type: "text/calendar"

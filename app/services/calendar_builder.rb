@@ -1,6 +1,7 @@
 class CalendarBuilder
-  def self.generate_calendar(shopping_day)
-    meals = Meal.all.order(:scheduled_at)
+  def self.generate_calendar(user)
+    shopping_day = user.profile.shopping_day
+    meals = user.meals.order(:scheduled_at)
     cal = RiCal.Calendar
     create_meal_events(meals, cal)
     create_shopping_events(shopping_day, meals, cal)

@@ -15,9 +15,9 @@ class MealsController < ApplicationController
 
   def destroy
     if current_user.meals.find(params[:id]).destroy
-      redirect_to :back, notice: "Meal destroyed."
+      redirect_to meals_path, notice: "Meal destroyed."
     else
-      redirect_to :back, notice: "Meal could not be destroyed."
+      redirect_to meals_path, notice: "Meal could not be destroyed."
     end
   end
 
