@@ -4,6 +4,13 @@
 
 
 .fl.w-100.pa2
+  -@calendar.weeks.each do |week|
+    -week.days.each do |day|
+      .fl.w-10
+        =day.strftime("%d")
+        What
+
+.fl.w-100.pa2
   %table.meals-table{cellspacing: 0}
     %tr
       %th.tl.bb{colspan: 3}

@@ -1,4 +1,4 @@
-class CalendarBuilder
+class ICalBuilder
   def self.generate_calendar(user)
     shopping_day = user.profile.shopping_day
     meals = user.meals.order(:scheduled_at)
