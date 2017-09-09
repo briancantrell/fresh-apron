@@ -4,7 +4,8 @@ class IngredientsControllerTest < ActionDispatch::IntegrationTest
   include Monban::Test::Helpers
   setup do
     @ingredient = ingredients(:one)
-    user = User.create
+    # user = User.create(email: "test@whatever.com")
+    user = users(:test_user)
     sign_in user
   end
 

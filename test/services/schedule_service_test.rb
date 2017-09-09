@@ -10,10 +10,10 @@ class MealSchedulerTest < ActiveSupport::TestCase
     )
 
     assert_equal Meal.first.scheduled_at,
-      DateTime.new(2017, 4, 18, 19, 0, 0)
+      Time.new(2017, 4, 18, 19, 0, 0)
 
     assert_equal Meal.last.scheduled_at,
-      DateTime.new(2017, 4, 20, 19, 0, 0)
+      Time.new(2017, 4, 20, 19, 0, 0)
   end
 
   test "it creates the right number of meals" do

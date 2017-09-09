@@ -6,7 +6,7 @@ module Meals
     def setup
       super
 
-      user = User.create
+      user = users(:test_user)
       sign_in(user)
 
       @recipe = Recipe.create(title: "Test Recipe")

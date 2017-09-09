@@ -1,0 +1,5 @@
+test_profile: {
+  user_id: 1,
+  meal_days: [2, 4],
+  shopping_day: 0
+}
