@@ -1,5 +1,5 @@
 class Ingredient < ApplicationRecord
-  enum units: [:ounce_volume, :ounce_weight, :item_count, :teaspoon, :tablespoon]
+  enum units: [:ounce_volume, :ounce_weight, :item_count, :teaspoon, :tablespoon, :cup]
 
   validates :name, presence: true
   validates :units, presence: true
@@ -10,7 +10,8 @@ class Ingredient < ApplicationRecord
       "ounce_weight" => "oz",
       "item_count" => "ct",
       "teaspoon" => "tsp",
-      "tablespoon" => "tbsp"
+      "tablespoon" => "tbsp",
+      "cup" => "cup"
     }[units]
   end
 
