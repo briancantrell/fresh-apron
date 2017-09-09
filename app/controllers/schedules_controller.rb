@@ -6,7 +6,7 @@ class SchedulesController < ApplicationController
     end_date = Date.parse(schedule_params[:end_date])
     days_to_schedule = current_user.profile.meal_days
 
-    if MealScheduler.schedule_meals(start_date, end_date, days_to_schedule)
+    if MealScheduler.schedule_meals(start_date, end_date, days_to_schedule, current_user)
       message = { notice: "Meals successfully scheduled." }
     else
       message = { alert: "There was an error scheduling your meals." }

@@ -6,7 +6,7 @@
 .fl.w-100.pa2
   %table.meals-table{cellspacing: 0}
     %tr
-      %th.tl.bb{colspan: 2}
+      %th.tl.bb{colspan: 3}
         %h2 Scheduled meals
 
     - @meals.each do |meal|
@@ -18,6 +18,8 @@
               {class: "recipe-chooser"}                                                    |
         %td
           =meal.scheduled_at.to_s(:friendly_date)
+        %td
+          =button_to "(x)", meal_path(meal), method: :delete
 
 .fl.w-100.pa2
   = button_to "Schedule next week", schedules_path(       |

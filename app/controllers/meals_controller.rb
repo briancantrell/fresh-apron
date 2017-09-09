@@ -7,9 +7,17 @@ class MealsController < ApplicationController
   end
 
   def index
-    @meals = Meal.all
+    @meals = Meal.all.order("scheduled_at desc")
     respond_to do |format|
       format.html
+    end
+  end
+
+  def destroy
+    if current_user.meals.find(params[:id]).destroy
+      redirect_to :back, notice: "Meal destroyed."
+    else
+      redirect_to :back, notice: "Meal could not be destroyed."
     end
   end
 

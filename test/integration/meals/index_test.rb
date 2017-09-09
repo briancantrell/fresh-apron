@@ -13,7 +13,8 @@ module Meals
       MealScheduler.schedule_meals(
         Date.new(2017, 4, 2),
         Date.new(2017, 4, 30),
-        [2,4]
+        [2,4],
+        user
       )
     end
 

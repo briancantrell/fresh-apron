@@ -1,12 +1,16 @@
 require 'test_helper'
 
 class MealSchedulerTest < ActiveSupport::TestCase
+  setup do
+    @user = users(:test_user)
+  end
   test "the start and end dates are correct" do
     Recipe.create(title: "Test Recipe")
     MealScheduler.schedule_meals(
       Date.new(2017, 4, 16),
       Date.new(2017, 4, 22),
-      [2,4]
+      [2,4],
+      @user
     )
 
     assert_equal Meal.first.scheduled_at,
@@ -22,7 +26,8 @@ class MealSchedulerTest < ActiveSupport::TestCase
       MealScheduler.schedule_meals(
         Date.new(2017, 4, 2),
         Date.new(2017, 4, 30),
-        [2,4]
+        [2,4],
+        @user
       )
     end
   end
@@ -32,13 +37,15 @@ class MealSchedulerTest < ActiveSupport::TestCase
     MealScheduler.schedule_meals(
       Date.new(2017, 4, 2),
       Date.new(2017, 4, 30),
-      [2,4]
+      [2,4],
+      @user
     )
     assert_difference 'Meal.count', 0 do
       MealScheduler.schedule_meals(
         Date.new(2017, 4, 2),
         Date.new(2017, 4, 30),
-        [2,4]
+        [2,4],
+        @user
       )
     end
   end

@@ -1,5 +1,5 @@
 class MealScheduler
-  def self.schedule_meals(start_date, end_date, days_to_schedule)
+  def self.schedule_meals(start_date, end_date, days_to_schedule, user)
     (start_date..end_date).map do |day|
       if days_to_schedule.include?(day.wday)
         scheduled_at = Time.new(
@@ -9,10 +9,11 @@ class MealScheduler
           19, 0, 0
         )
 
-        Meal.find_or_create_by(
-          scheduled_at: scheduled_at,
-          recipe: Recipe.all.sample
-        )
+        user
+          .meals
+          .find_or_create_by(scheduled_at: scheduled_at) do |meal|
+            meal.recipe = Recipe.all.sample
+        end
       end
     end
   end
