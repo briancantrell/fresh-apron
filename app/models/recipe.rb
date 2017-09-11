@@ -6,6 +6,7 @@ class Recipe < ApplicationRecord
 
   def to_json
     {
+      id: id,
       title: title,
       ingredients: recipe_ingredients.map(&:to_json)
     }

@@ -1,4 +1,9 @@
 class MealsController < ApplicationController
+  def create
+    meal = current_user.meals.create(meal_params)
+    redirect_to meals_path
+  end
+
   def update
     if Meal.find(params[:id]).update(meal_params)
       redirect_to meals_path
@@ -8,6 +13,9 @@ class MealsController < ApplicationController
 
   def index
     @meals = Meal.all.order("scheduled_at desc")
+    @planner = TwoWeekPlanner.new
+    @planner.add_meals(@meals)
+
     respond_to do |format|
       format.html
     end
@@ -24,7 +32,7 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.permit :recipe_id
+    params.require(:meal).permit :recipe_id, :scheduled_at
   end
 end
 

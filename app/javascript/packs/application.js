@@ -14,6 +14,8 @@ var ReactRailsUJS = require("react_ujs")
 
 import { IngredientPicker } from "../components/recipe_form/recipe_ingredients_list"
 
+import { MealForm } from "../components/meals/meal_form"
+
 var componentRequireContext = require.context("components", true)
 ReactRailsUJS.useContext(componentRequireContext)
 
