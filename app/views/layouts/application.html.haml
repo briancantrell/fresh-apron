@@ -19,7 +19,8 @@
           %a.link.dim.dark-gray.f6.f5-l.dib.mr3.mr4-l{:href => meals_path, :title => "Meals"} Meals
           %a.link.dim.dark-gray.f6.f5-l.dib.mr3.mr4-l{:href => recipes_path, :title => "Recipes"} Recipes
           %a.link.dim.dark-gray.f6.f5-l.dib.mr3.mr4-l{:href => ingredients_path, :title => "Ingredients"} Ingredients
-          %a.link.dim.dark-gray.f6.f5-l.dib.mr3.mr4-l{:href => edit_user_profile_path(current_user), :title => "Profile"} Profile
+          -if current_user
+            %a.link.dim.dark-gray.f6.f5-l.dib.mr3.mr4-l{:href => edit_user_profile_path(current_user), :title => "Profile"} Profile
 
 
     %article{class: "pa3 ph5-ns"}

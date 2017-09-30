@@ -12,8 +12,12 @@ class MealsController < ApplicationController
   end
 
   def index
-    @meals = Meal.all.order("scheduled_at desc")
     @planner = TwoWeekPlanner.new
+    @meals = Meal
+      .where("scheduled_at BETWEEN ? AND ?",
+    @planner.weeks.first.first.to_date,
+    @planner.weeks.last.last.to_date)
+      .order("scheduled_at desc")
     @planner.add_meals(@meals)
 
     respond_to do |format|
