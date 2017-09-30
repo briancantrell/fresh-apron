@@ -41,10 +41,6 @@
     "jest": "^21.2.1",
     "jest-cli": "^21.2.1",
     "react-test-renderer": "^15.6.1",
-    "regenerator-runtime": "^0.10.5",
-    "scripts": {
-      "test": "jest",
-      "postinstall": "cd client && npm install"
-    }
+    "regenerator-runtime": "^0.10.5"
   }
 }
