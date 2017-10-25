@@ -62,7 +62,6 @@ class TwoWeekPlannerTest < ActiveSupport::TestCase
       meals << Meal.new(scheduled_at: next_wednesday)
       planner.add_meals(meals)
 
-      debugger
       assert_equal(
         1,
         planner.weeks.first[last_wednesday].meals.length
