@@ -13,7 +13,7 @@
         .fl.w-100.pa1
           =react_component("MealForm",
             { availableRecipes: Recipe.all.map(&:to_json),
-              day: day.to_formatted_s(:db),
+              scheduled_at: day,
               authenticity_token: form_authenticity_token })
 
         -day.meals.each do |meal|

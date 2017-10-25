@@ -15,8 +15,8 @@ class MealsController < ApplicationController
     @planner = TwoWeekPlanner.new
     @meals = Meal
       .where("scheduled_at BETWEEN ? AND ?",
-    @planner.weeks.first.first.to_date,
-    @planner.weeks.last.last.to_date)
+    @planner.weeks.first.first.beginning_of_day,
+    @planner.weeks.last.last.end_of_day)
       .order("scheduled_at desc")
     @planner.add_meals(@meals)
 

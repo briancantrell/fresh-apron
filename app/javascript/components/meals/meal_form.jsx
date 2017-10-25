@@ -47,7 +47,7 @@ export default class MealForm extends React.Component {
         <div>
           <form action="/meals" method="post">
             <RecipePicker availableRecipes={this.props.availableRecipes} />
-            <input type='hidden' name='meal[scheduled_at]' value={this.props.day} />
+            <input type='hidden' name='meal[scheduled_at]' value={this.props.scheduled_at} />
             <input type='hidden' name='authenticity_token' value={this.props.authenticity_token} />
             <button>Save</button>
 

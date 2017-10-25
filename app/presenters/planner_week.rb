@@ -15,8 +15,9 @@ class PlannerWeek
 
   def build_week(start_offset, end_offset)
     start_offset.upto(end_offset).map do |i|
+      day = Time.zone.now.beginning_of_week(:sunday) + i.day
       PlannerDay.new(
-        Time.zone.now.beginning_of_week(:sunday) + i.day
+                        Time.parse(day.strftime("%Y-%m-%d") + " 19:00")
       )
     end
   end
