@@ -1,28 +1,24 @@
 @import tachyons/tachyons.scss
-.meals-table
-  @extend .pv3
-  @extend .pr3
-  @extend .b--black-20
+.meals-calendar, .meals-calendar tr
+  border-spacing: 0
 
-  td
-    @extend .pv3
-    @extend .pr3
-    @extend .bb
-    @extend .b--black-20
-
-.planner-day
+.meals-calendar-day
   @extend .ba
   @extend .b--black-20
   position: relative
   min-height: 10em
+  padding: 0 0 40px 0
   width: 14%
+  vertical-align: top
+
   .date
     position: absolute
     bottom: 0
     text-align: center
 
-.recipe-picker
-  max-width: 100%
+.meal-form select
+  box-sizing: border-box
+  width: 100%
 
 .show-recipe-picker
   @extend .f6
@@ -33,6 +29,17 @@
   @extend .mb2
   @extend .dib
   @extend .white
-  @extend .bg-black
+  @extend .bg-dark-gray
   cursor: pointer
+
+.meals-table
+  @extend .pv3
+  @extend .pr3
+  @extend .b--black-20
+
+  td
+    @extend .pv3
+    @extend .pr3
+    @extend .bb
+    @extend .b--black-20
 

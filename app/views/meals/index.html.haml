@@ -6,26 +6,27 @@
     %input{value: schedules_url(token: current_user.auth_token), size: 60, name: "calendar_url"}
 
 
--@planner.weeks.each do |week|
-  .fl.w-100.planner-week
-    -week.days.each do |day|
-      .fl.planner-day
-        .fl.w-100.pa1
-          =react_component("MealForm",
-            { availableRecipes: Recipe.all.map(&:to_json),
-              scheduled_at: day,
-              authenticity_token: form_authenticity_token })
+%table.meals-calendar
+  -@planner.weeks.each do |week|
+    %tr
+      -week.days.each do |day|
+        %td.meals-calendar-day
+          .meal-form.pa1
+            =react_component("MealForm",
+              { availableRecipes: Recipe.all.map(&:to_json),
+                scheduled_at: day,
+                authenticity_token: form_authenticity_token })
 
-        -day.meals.each do |meal|
-          .pa2.b
-            =meal.recipe_title
-            =link_to "x", meal_path(meal), method: :delete
+          -day.meals.each do |meal|
+            .pa2
+              =meal.recipe_title
+              =link_to "x", meal_path(meal), method: :delete
 
-        .fl.w-100.date.pa1
-          .fl.w-70.pa2.tr
-            =day.strftime("%a")
-          .fl.w-30.pa2.ba
-            =day.strftime("%d")
+          .fl.w-100.date.pa1
+            .fl.w-70.pa2.tr
+              =day.strftime("%a")
+            .fl.w-30.pa2.ba
+              =day.strftime("%d")
 
 .fl.w-100
   %table.meals-table{cellspacing: 0}
