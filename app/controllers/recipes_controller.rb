@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/new
   def new
-    @available_ingredients = Ingredient.all
+    @available_ingredients = Ingredient.all.order(:name)
     @recipe = Recipe.new
   end
 
