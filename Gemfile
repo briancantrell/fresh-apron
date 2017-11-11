@@ -41,7 +41,7 @@ gem 'rollbar'
 # gem 'capistrano-rails', group: :development
 #
 gem 'ri_cal', '~> 0.8'
-gem "react-rails"
+gem 'react-rails', '~>2.4.1'
 gem 'rails_12factor', group: :production
 
 
