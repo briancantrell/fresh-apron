@@ -1,5 +1,5 @@
-%h1 Editing Recipe
-= render 'form', recipe: @recipe
+%h1 Editing Recipe wat
+= render 'form', { recipe: @recipe, available_ingredients: @available_ingredients }
 = link_to 'Show', @recipe
 |
 = link_to 'Back', recipes_path
