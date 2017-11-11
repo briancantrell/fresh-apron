@@ -1,5 +1,11 @@
 # Running tests
+Javascript tests:
 `jest --config=jest.config.json`
+
+Ruby tests:
+`rake` to run them all, or
+`ruby -Itest test/presenters/two_week_planner_test.rb --name /first_day/`
+
 
 # The plan
  - [x] Click "plan next week" and see new meals

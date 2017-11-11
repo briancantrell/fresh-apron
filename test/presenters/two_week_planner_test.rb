@@ -15,7 +15,7 @@ class TwoWeekPlannerTest < ActiveSupport::TestCase
     Timecop.freeze("2017-09-09") do
       planner = TwoWeekPlanner.new
       assert_equal(
-        Time.zone.parse("2017-09-03"),
+        Time.parse("2017-09-03 19:00"),
         planner.weeks.first.first
       )
     end
@@ -25,7 +25,7 @@ class TwoWeekPlannerTest < ActiveSupport::TestCase
     Timecop.freeze("2017-09-09") do
       planner = TwoWeekPlanner.new
       assert_equal(
-        Time.zone.parse("2017-09-09"),
+        Time.zone.parse("2017-09-09 19:00"),
         planner.weeks.first.last
       )
     end
@@ -36,7 +36,7 @@ class TwoWeekPlannerTest < ActiveSupport::TestCase
     Timecop.freeze("2017-09-09") do
       planner = TwoWeekPlanner.new
       assert_equal(
-        Time.zone.parse("2017-09-10"),
+        Time.parse("2017-09-10 19:00"),
         planner.weeks.last.first
       )
     end
@@ -46,7 +46,7 @@ class TwoWeekPlannerTest < ActiveSupport::TestCase
     Timecop.freeze("2017-09-09") do
       planner = TwoWeekPlanner.new
       assert_equal(
-        Time.zone.parse("2017-09-16"),
+        Time.zone.parse("2017-09-16 19:00"),
         planner.weeks.last.last
       )
     end
