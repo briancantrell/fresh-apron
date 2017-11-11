@@ -1,3 +1,9 @@
+# Be sure to run webpack
+Either by using foreman with the provided Procfile
+`foreman run`
+or
+`rails s` + `webpack -w`
+
 # Running tests
 Javascript tests:
 `jest --config=jest.config.json`

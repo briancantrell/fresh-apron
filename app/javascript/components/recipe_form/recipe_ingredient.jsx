@@ -60,7 +60,7 @@ export default class RecipeIngredient extends React.Component {
     };
 
     return (
-      <div className={"fl w-100 pa" + (this.state.deleted == true ? "deleted" : "")}>
+      <div className={"fl w-100 pa recipe-ingredient" + (this.state.deleted == true ? " deleted" : "")}>
         <input
           name="recipe[recipe_ingredients_attributes][][id]"
           value={this.props.selectedIngredient.id}
