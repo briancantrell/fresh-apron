@@ -16,11 +16,9 @@ Ruby tests:
  - [x] Event shows instructions
  - [x] If the week has meals, show shopping list
  - [x] Recipe create form
+ - [x] Meal event has link to recipe
 
- - [ ] Meal event has link to recipe
- - [ ] Shopping event has link to checkable shopping list 
- - [ ] Shopping list exports to Wunderlist
-
+ - [ ] Shopping list can be exported to dropbox in markdown format
  - [ ] Use attributes API to standardize measurements, i.e. user inputs recipe ingredient as "2 cups water", stored in DB as 32 oz
 
 # Things that might happen some day
@@ -36,25 +34,3 @@ Meals
   - Time
 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
