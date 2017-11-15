@@ -22,4 +22,8 @@ class User < ActiveRecord::Base
     return if profile.present?
     Profile.create(user: self)
   end
+
+  def time_zone
+    "Eastern Time (US & Canada)"
+  end
 end
