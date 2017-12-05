@@ -81,7 +81,7 @@ export default class RecipeIngredient extends React.Component {
             name="recipe[recipe_ingredients_attributes][][ingredient_id]"
             onChange={this.handleIngredientChange}
             value={this.state.selectedIngredient.ingredient_id}
-            className="db border-box hover-black  measure ba b--black-20 pa2 br2 mb2"
+            className="db border-box hover-black measure ba b--black-20 pa2 br2 mb2"
             >
             {ingredientOptions}
           </select>
@@ -90,7 +90,7 @@ export default class RecipeIngredient extends React.Component {
         <div className="fl w-third">
           <button
             onClick={this.deleteIngredient}
-            className="delete-button db border-box hover-black  measure ba b--black-20 pa2 br2 mb2"
+            className="delete-button db border-box hover-black measure ba b--black-20 pa2 br2 mb2"
             type="button"
             >
             Delete

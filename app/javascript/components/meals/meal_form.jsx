@@ -2,7 +2,6 @@ import React from 'react';
 
 export class RecipePicker extends React.Component {
   render() {
-
     var recipeOptions = [];
     this.props.availableRecipes.forEach(function(recipe) {
       recipeOptions.push(

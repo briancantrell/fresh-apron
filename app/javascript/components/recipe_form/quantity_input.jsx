@@ -9,7 +9,7 @@ export default class QuantityInput extends React.Component {
           value={this.props.quantity}
           onChange={this.props.onQuantityChange}
           size="5"
-          className="border-box hover-black  measure ba b--black-20 pa2 br2 mb2"
+          className="border-box hover-black measure ba b--black-20 pa2 br2 mb2"
           />
         <span>{this.props.units}</span>
       </span>

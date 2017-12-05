@@ -5,8 +5,8 @@ import RecipeIngredientsList from '../../app/javascript/components/recipe_form/r
 
 var availableIngredients = [{id: "99", name: "Beans"}, {name: "Rice", id:  "100"}]
 var currentIngredients = [
-  {"ingredient_id": "100", "name": "Rice", "quantity": null, "units": null},
-  {"ingredient_id": "99", "name": "Beans", "quantity": null, "units": null}
+  {"ingredient_id": "100", "name": "Rice", "quantity": "", "units": ""},
+  {"ingredient_id": "99", "name": "Beans", "quantity": "", "units": ""}
 ]
 
 var recipeIngredientsList = ReactTestUtils.renderIntoDocument(

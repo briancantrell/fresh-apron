@@ -13,5 +13,7 @@ module RecipeCal
     # -- all .rb files in that directory are automatically loaded.
 
     config.time_zone = 'Eastern Time (US & Canada)'
+
+    config.action_mailer.default_url_options = { :host => ENV['app_host'] }
   end
 end

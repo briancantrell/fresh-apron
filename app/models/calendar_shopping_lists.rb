@@ -14,7 +14,6 @@ class CalendarShoppingLists
   def get_shopping_list_for_meal(meal)
     shopping_date = shopping_date_for_meal(meal)
     shopping_list_for_meal = shopping_days[shopping_date] || shopping_days[shopping_date] = ShoppingList.new
-
   end
 
   def shopping_date_for_meal(meal)

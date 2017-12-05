@@ -23,19 +23,21 @@ export default class RecipeIngredientsList extends React.Component {
     var availableIngredients = this.props.availableIngredients;
     var ingredientsComponents = [];
 
-    this.state.currentIngredients.forEach(function(ingredient){
-     ingredientsComponents.push(
+    this.state.currentIngredients.forEach(function(ingredient, index){
+      var key = "ingredient-" + index;
+
+      ingredientsComponents.push(
        <RecipeIngredient
         selectedIngredient={ingredient}
         availableIngredients={availableIngredients}
-        key={ingredient.id}
+        key={key}
         />);
     });
 
     return (
       <div>
         {ingredientsComponents}
-        <input type="button" value="Add ingredient" onClick={this.addIngredient} className="db border-box hover-black  measure ba b--black-20 pa2 br2 mb2" />
+        <input type="button" value="Add ingredient" onClick={this.addIngredient} className="db border-box hover-black measure ba b--black-20 pa2 br2 mb2" />
       </div>
     );
   }
