@@ -6,7 +6,7 @@
     %input{value: schedules_url(token: current_user.auth_token), size: 60, name: "calendar_url"}
 
 
-%table.meals-calendar
+%table.meals-calendar.w-100
   -@planner.weeks.each do |week|
     %tr
       -week.days.each do |day|
