@@ -8,6 +8,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost
 
 
 development:
@@ -21,6 +22,7 @@ development:
 test:
   <<: *default
   database: fresh_apron_test
+  user: <%= ENV['PG_USER'] %>
 
 production:
   <<: *default

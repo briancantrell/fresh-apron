@@ -25,3 +25,4 @@ tags
 yarn-error.log
 .DS_Store
 .env
+test/reports

@@ -52,6 +52,10 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
+group :test do
+  gem 'minitest-ci', '~>3.3.0'
+end
+
 group :development do
   gem 'monban-generators'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
