@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/briancantrell/fresh-apron.svg?style=svg)](https://circleci.com/gh/briancantrell/fresh-apron)
+
 # Development
 ## Be sure to run webpack
 Either by using foreman with the provided Procfile
