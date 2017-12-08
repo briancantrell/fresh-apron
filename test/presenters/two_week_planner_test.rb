@@ -15,7 +15,7 @@ class TwoWeekPlannerTest < ActiveSupport::TestCase
     Timecop.freeze("2017-09-09") do
       planner = TwoWeekPlanner.new
       assert_equal(
-        Time.parse("2017-09-03 19:00"),
+        Time.zone.parse("2017-09-03 19:00"),
         planner.weeks.first.first
       )
     end
@@ -36,7 +36,7 @@ class TwoWeekPlannerTest < ActiveSupport::TestCase
     Timecop.freeze("2017-09-09") do
       planner = TwoWeekPlanner.new
       assert_equal(
-        Time.parse("2017-09-10 19:00"),
+        Time.zone.parse("2017-09-10 19:00"),
         planner.weeks.last.first
       )
     end
@@ -55,8 +55,8 @@ class TwoWeekPlannerTest < ActiveSupport::TestCase
   test "add_meals adds meals" do
     Timecop.freeze("2017-09-09") do
       planner = TwoWeekPlanner.new
-      last_wednesday = Time.new(2017, 9, 6)
-      next_wednesday = Time.new(2017, 9, 13)
+      last_wednesday = Time.new(2017, 9, 6).in_time_zone
+      next_wednesday = Time.new(2017, 9, 13).in_time_zone
       meals = []
       meals << Meal.new(scheduled_at: last_wednesday)
       meals << Meal.new(scheduled_at: next_wednesday)
