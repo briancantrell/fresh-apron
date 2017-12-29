@@ -9,7 +9,7 @@ module Meals
       user = users(:test_user)
       sign_in(user)
 
-      @recipe = Recipe.create(title: "Test Recipe")
+      @recipe = Recipe.create!(title: "Test Recipe", servings: 2)
       beginning_of_week = Date.today.beginning_of_week
       MealScheduler.schedule_meals(
         beginning_of_week,

@@ -10,6 +10,7 @@ export class RecipePicker extends React.Component {
         </option>
       );
     });
+
     return (
       <div>
         <select
@@ -18,8 +19,26 @@ export class RecipePicker extends React.Component {
           >
           {recipeOptions}
         </select>
+        <label htmlFor="servings">servings:</label>
+        <select
+          id="servings"
+          name="meal[servings]"
+          value="2"
+          >
+          {this.oneToFiveOptions()}
+        </select>
       </div>
     )
+  }
+
+  oneToFiveOptions() {
+    var options = [];
+    for (var i = 1; i < 10; i++) {
+      options.push(
+        <option value={i}>{i}</option>
+      );
+    }
+    return options;
   }
 }
 

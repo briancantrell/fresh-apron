@@ -50,6 +50,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'timecop'
   gem 'dotenv-rails'
+  gem 'rb-readline'
 end
 
 group :test do

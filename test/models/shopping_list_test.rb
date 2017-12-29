@@ -8,13 +8,13 @@ class ShoppingListTest < ActiveSupport::TestCase
   end
 
   def create_cheese_doodles
-    @cheese_doodles = Recipe.create(title: "Cheese doodles")
+    @cheese_doodles = Recipe.create(title: "Cheese doodles", servings: 2)
     @cheese_doodles.recipe_ingredients.create(ingredient: @cheese, quantity: 2)
     @cheese_doodles.recipe_ingredients.create(ingredient: @doodles, quantity: 1)
   end
 
   def create_cheese_pizza
-    @cheese_pizza = Recipe.create(title: "Cheese pizza")
+    @cheese_pizza = Recipe.create(title: "Cheese pizza", servings: 2)
     @cheese_pizza.recipe_ingredients.create(ingredient: @cheese, quantity: 1)
     @cheese_pizza.recipe_ingredients.create(ingredient: @pizza, quantity: 2)
   end
@@ -27,7 +27,7 @@ class ShoppingListTest < ActiveSupport::TestCase
   end
 
   test "add_meal creates a new item when it doesn't exist" do
-    meal = Meal.create(recipe: @cheese_doodles)
+    meal = Meal.create(recipe: @cheese_doodles, servings: 2)
     @shopping_list.add_meal(meal)
     assert_equal(
       2,
@@ -43,7 +43,7 @@ class ShoppingListTest < ActiveSupport::TestCase
   end
 
   test "add_meal sums ingredient quantity across recipes in the same list" do
-    meal = Meal.create(recipe: @cheese_doodles)
+    meal = Meal.create(recipe: @cheese_doodles, servings: 2)
     @shopping_list.add_meal(meal)
     meal = Meal.create(recipe: @cheese_pizza)
     @shopping_list.add_meal(meal)

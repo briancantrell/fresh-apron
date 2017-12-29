@@ -5,6 +5,12 @@ class RecipeIngredient < ApplicationRecord
   delegate :name, to: :ingredient
   delegate :units_abbreviation, to: :ingredient
 
+  validates :ingredient, presence: true
+
+  def serving_adjusted_quantity
+    recipe.servings
+  end
+
   def to_json
     {
       id: id,
