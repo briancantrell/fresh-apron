@@ -55,7 +55,6 @@ test("it allows deleting an ingredient", () => {
   var deleteButtons = ReactTestUtils.scryRenderedDOMComponentsWithClass(
     recipeIngredientsList, "delete-button"
   );
-  debugger
   ReactTestUtils.Simulate.click(deleteButtons[0]);
 
   var hiddenDeleteInput = ReactTestUtils.scryRenderedDOMComponentsWithClass(

@@ -26,6 +26,7 @@ Ruby tests:
  - [x] Recipe create form
  - [x] Meal event has link to recipe
 
+ - [ ] Support for configurable servings
  - [ ] Shopping list can be exported to Dropbox in markdown format
  - [ ] Use attributes API to standardize measurements, i.e. user inputs recipe ingredient as "2 cups water", stored in DB as 16 oz
 

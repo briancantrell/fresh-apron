@@ -13,7 +13,7 @@
         %td.meals-calendar-day
           .meal-form.pa1
             =react_component("MealForm",
-              { availableRecipes: Recipe.all.map(&:to_json),
+              { availableRecipes: @available_recipe_json,
                 scheduled_at: day,
                 authenticity_token: form_authenticity_token })
 

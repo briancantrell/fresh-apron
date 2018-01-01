@@ -20,6 +20,8 @@ class MealsController < ApplicationController
       .order("scheduled_at desc")
     @planner.add_meals(@meals)
 
+    @available_recipe_json = Recipe.all.map(&:to_json)
+
     respond_to do |format|
       format.html
     end
